@@ -1,0 +1,5 @@
+library(RODBC)
+connection <- odbcDriverConnect('driver={SQL Server};server=PRATIK-PC;database=test;trusted_connection=true')
+data<-sqlQuery(connection, 'select * from test.dbo.WebData')
+abc<-summary(data)
+capture.output( print(abc, print.gap=3), file="E:\\code\\New folder\\summary.txt")

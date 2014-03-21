@@ -1,0 +1,10 @@
+library(Hmisc)
+library(pastecs)
+library(psych)
+need packages 'Hmisc' 'pastecs' 'psych'
+library(RODBC)
+connection <- odbcDriverConnect('driver={SQL Server};server=PRATIK-PC;database=test;trusted_connection=true')
+data<-sqlQuery(connection, 'select * from test.dbo.WebData')
+describe(mydata)
+abc<-stat.desc(mydata)
+capture.output( print(abc, print.gap=3), file="E:\\code\\output\\detailedstat.txt")

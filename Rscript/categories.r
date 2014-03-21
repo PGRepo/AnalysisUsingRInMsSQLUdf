@@ -1,0 +1,8 @@
+library(RODBC)
+connection <- odbcDriverConnect('driver={SQL Server};server=PRATIK-PC;database=test;trusted_connection=true')
+data<-sqlQuery(connection, 'select * from test.dbo.WebData')
+graph1 <- unique(within(mydata, {  PAGE_VIEWS_PER_VISITOR <- ave(PAGE_VIEWS_PER_VISITOR, CATEGORY, FUN = sum)}))
+attach(graph1)
+pdf(file="e://code///New folder//category.pdf")
+plot(y = graph1$PAGE_VIEWS_PER_VISITOR, x = graph1$CATEGORY, xlab="categories", ylab="page views per visitor")
+dev.off()

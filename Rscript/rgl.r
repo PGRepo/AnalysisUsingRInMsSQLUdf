@@ -1,0 +1,6 @@
+library(rgl)
+library(RODBC)
+connection <- odbcDriverConnect('driver={SQL Server};server=PRATIK-PC;database=test;trusted_connection=true')
+data<-sqlQuery(connection, 'select * from test.dbo.WebData')
+plot3d(LOAD_TIME, BOUNCE_RATE, TIME_ON_SITE, col="red", size=3)
+dev.off()
